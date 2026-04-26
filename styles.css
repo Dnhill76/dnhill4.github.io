@@ -1,37 +1,48 @@
 /* ============================================================
-   Uphill Nutrition — styles.css
-   CIS 300 | Darrian Hill | dnhill4
+   UPHILL NUTRITION — styles.css
+   Author: Darrian Hill (dnhill4)
+   CIS 300 | Elva Lin
    ============================================================ */
 
-
+/* --- CSS Custom Properties (Variables) --- */
 :root {
-  --text: #0f1512;
-  --background: #f4f7f5;
-  --primary: #1b6b3a;
-  --secondary: #b8d4c3;
-  --accent: #d4590a;
+  --color-bg:          #0d0f0e;
+  --color-bg-alt:      #141714;
+  --color-surface:     #1a1e1a;
+  --color-border:      #2a2e2a;
+  --color-primary:     #4caf50;
+  --color-primary-dk:  #388e3c;
+  --color-accent:      #ff6f00;
+  --color-accent-lt:   #ffa040;
+  --color-text:        #e8ede8;
+  --color-text-muted:  #8a9a8a;
+  --color-white:       #ffffff;
 
-  --font-display: 'Barlow Condensed', sans-serif;
-  --font-body: 'Barlow', sans-serif;
+  --font-display:      'Barlow Condensed', sans-serif;
+  --font-body:         'Barlow', sans-serif;
 
-  --max-width: 1100px;
-  --radius: 4px;
-  --transition: 0.2s ease;
+  --radius:            6px;
+  --max-width:         1100px;
+  --header-h:          70px;
 }
 
-
-* {
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
   font-family: var(--font-body);
-  background-color: var(--background);
-  color: var(--text);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.7;
 }
 
 img {
@@ -40,129 +51,129 @@ img {
 }
 
 a {
+  color: var(--color-primary);
   text-decoration: none;
-  color: inherit;
+}
+
+a:hover {
+  color: var(--color-accent-lt);
 }
 
 ul {
   list-style: none;
 }
 
-/* --- Header ----------------------------------------------- */
+/* ============================================================
+   HEADER & NAV
+   ============================================================ */
 header {
-  background-color: var(--text);
-  color: var(--background);
-  padding: 0 2rem;
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 3px solid var(--accent);
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  height: var(--header-h);
 }
 
 .header-inner {
   max-width: var(--max-width);
   margin: 0 auto;
+  padding: 0 2rem;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
 }
 
-/* --- Logo -------------------------------------------------- */
 .logo {
   display: flex;
   flex-direction: column;
   line-height: 1;
   font-family: var(--font-display);
-  letter-spacing: 0.1em;
+  font-weight: 800;
+  letter-spacing: 0.04em;
 }
 
 .logo-up {
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--accent);
+  font-size: 1.5rem;
+  color: var(--color-primary);
 }
 
 .logo-nutrition {
   font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--secondary);
-  letter-spacing: 0.25em;
+  color: var(--color-text-muted);
+  letter-spacing: 0.15em;
 }
 
-/* --- Navigation -------------------------------------------- */
 nav {
   display: flex;
-  gap: 2rem;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  gap: 1.5rem;
 }
 
 nav a {
-  color: var(--secondary);
-  padding: 4px 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding: 0.25rem 0;
   border-bottom: 2px solid transparent;
-  transition: color var(--transition), border-color var(--transition);
+  transition: color 0.2s, border-color 0.2s;
 }
 
-nav a:hover,
+nav a:hover {
+  color: var(--color-text);
+  border-bottom-color: var(--color-primary);
+}
+
 nav a.active {
-  color: var(--background);
-  border-bottom-color: var(--accent);
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
 }
 
-/* --- Hero -------------------------------------------------- */
+/* ============================================================
+   INDEX HERO
+   ============================================================ */
 .hero {
-  background-color: var(--text);
-  color: var(--background);
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
   padding: 5rem 2rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -60px;
-  right: -60px;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(212, 89, 10, 0.12) 0%, transparent 70%);
-  pointer-events: none;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  gap: 2rem;
+  justify-content: space-between;
 }
 
 .hero-content {
-  max-width: var(--max-width);
-  margin: 0 auto;
+  max-width: 620px;
 }
 
 .hero-label {
   font-family: var(--font-display);
   font-size: 0.85rem;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--color-accent);
   margin-bottom: 1rem;
 }
 
 .hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-size: clamp(3rem, 7vw, 5.5rem);
   font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.01em;
+  line-height: 1.0;
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
+  color: var(--color-white);
+  margin-bottom: 1.25rem;
 }
 
 .hero-sub {
-  max-width: 560px;
-  color: var(--secondary);
-  font-size: 1.05rem;
-  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  max-width: 520px;
+  margin-bottom: 2rem;
 }
 
 .hero-cta {
@@ -171,66 +182,62 @@ nav a.active {
   flex-wrap: wrap;
 }
 
-.hero-badge {
-  position: absolute;
-  right: 4rem;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.4rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(184, 212, 195, 0.15);
-  line-height: 1.2;
-}
-
-/* --- Buttons ----------------------------------------------- */
 .btn-primary {
-  display: inline-block;
-  background-color: var(--accent);
-  color: var(--background);
+  background-color: var(--color-primary);
+  color: var(--color-bg);
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.1em;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 0.75rem 1.75rem;
   border-radius: var(--radius);
-  transition: background-color var(--transition), transform var(--transition);
+  transition: background-color 0.2s;
 }
 
 .btn-primary:hover {
-  background-color: #b84a06;
-  transform: translateY(-2px);
+  background-color: var(--color-primary-dk);
+  color: var(--color-white);
 }
 
 .btn-secondary {
-  display: inline-block;
-  border: 2px solid var(--secondary);
-  color: var(--secondary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.1em;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 0.75rem 1.75rem;
   border-radius: var(--radius);
-  transition: background-color var(--transition), color var(--transition);
+  transition: border-color 0.2s, color 0.2s;
 }
 
 .btn-secondary:hover {
-  background-color: var(--secondary);
-  color: var(--text);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
-/* --- Mission Strip ----------------------------------------- */
+.hero-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-border);
+}
+
+/* ============================================================
+   MISSION STRIP
+   ============================================================ */
 .mission-strip {
-  background-color: var(--primary);
-  color: var(--background);
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
   padding: 2.5rem 2rem;
 }
 
@@ -239,288 +246,494 @@ nav a.active {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 3rem;
 }
 
 .strip-stat {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 100px;
-  text-align: center;
+  min-width: 80px;
 }
 
 .stat-num {
   font-family: var(--font-display);
   font-size: 3rem;
   font-weight: 800;
-  color: var(--accent);
+  color: var(--color-primary);
   line-height: 1;
 }
 
 .stat-label {
   font-size: 0.75rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--secondary);
-  margin-top: 0.25rem;
+  color: var(--color-text-muted);
 }
 
 .strip-divider {
   width: 1px;
   height: 60px;
-  background-color: rgba(184, 212, 195, 0.3);
-  flex-shrink: 0;
+  background-color: var(--color-border);
 }
 
 .strip-text {
-  font-size: 0.95rem;
-  color: var(--secondary);
-  flex: 1;
-  line-height: 1.7;
+  color: var(--color-text-muted);
+  max-width: 600px;
+  font-size: 1rem;
 }
 
-/* --- Cards Section ----------------------------------------- */
-.cards-section {
+/* ============================================================
+   CONTENT SECTIONS (shared)
+   ============================================================ */
+.content-section {
   padding: 5rem 2rem;
+}
+
+.content-section.alt-bg {
+  background-color: var(--color-bg-alt);
+}
+
+.section-inner {
   max-width: var(--max-width);
   margin: 0 auto;
 }
 
-.section-heading {
-  font-family: var(--font-display);
-  font-size: 2.2rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 2.5rem;
-  color: var(--text);
-  border-left: 5px solid var(--accent);
-  padding-left: 1rem;
+.section-header {
+  margin-bottom: 3rem;
 }
 
-.cards-grid {
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: 0.75rem;
+}
+
+.section-sub {
+  color: var(--color-text-muted);
+  max-width: 600px;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   PAGE HERO (inner pages)
+   ============================================================ */
+.page-hero {
+  padding: 5rem 2rem 4rem;
+  border-bottom: 1px solid var(--color-border);
+  background: linear-gradient(135deg, var(--color-bg) 60%, var(--color-surface));
+}
+
+.page-hero-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.page-label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--color-white);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.page-hero p {
+  color: var(--color-text-muted);
+  max-width: 560px;
+  font-size: 1.05rem;
+}
+
+.supp-hero {
+  background: linear-gradient(135deg, var(--color-bg) 50%, #1a1400);
+}
+
+/* ============================================================
+   MACRO CARDS (Nutrition page)
+   ============================================================ */
+.card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
-/* --- Card -------------------------------------------------- */
-.card {
-  background-color: #ffffff;
-  border: 1px solid #dde8e2;
+.macro-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 2rem;
-  transition: transform var(--transition), box-shadow var(--transition);
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(27, 107, 58, 0.1);
-}
-
-.card-accent {
-  background-color: var(--text);
-  color: var(--background);
-  border-color: var(--text);
-}
-
-.card-accent p {
-  color: var(--secondary);
-}
-
-.card-icon {
-  font-size: 1.8rem;
-  color: var(--accent);
+.macro-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
   margin-bottom: 1rem;
 }
 
-.card h3 {
+.protein-icon {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: var(--color-primary);
+}
+
+.carb-icon {
+  background-color: rgba(255, 111, 0, 0.15);
+  color: var(--color-accent);
+}
+
+.fat-icon {
+  background-color: rgba(100, 160, 200, 0.15);
+  color: #64a0c8;
+}
+
+.macro-card h3 {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  color: var(--color-white);
   margin-bottom: 0.75rem;
 }
 
-.card p {
-  font-size: 0.92rem;
-  color: #4a5a50;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
+.macro-card p {
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
 }
 
-.card-link {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  border-bottom: 1px solid transparent;
-  transition: border-color var(--transition);
+.macro-list li {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  padding: 0.3rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--color-primary);
+  margin-bottom: 0.4rem;
 }
 
-.card-link:hover {
-  border-bottom-color: var(--accent);
-}
-
-/* --- Audience Section -------------------------------------- */
-.audience-section {
-  background-color: #eaf2ed;
-  padding: 5rem 2rem;
-}
-
-.audience-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
+/* ============================================================
+   TWO COLUMN LAYOUT (Nutrition - meal timing)
+   ============================================================ */
+.two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 3rem;
+  align-items: start;
+}
+
+.col-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: 1rem;
+}
+
+.col-text h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.col-text p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+/* Timing Chart */
+.timing-chart {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.timing-row {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 0.75rem;
   align-items: center;
 }
 
-.audience-text h2 {
+.timing-label {
   font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  margin-bottom: 1rem;
-  color: var(--text);
-}
-
-.audience-text p {
-  color: #3a4a40;
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
-}
-
-.audience-list {
-  margin: 1.5rem 0 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.audience-list li {
-  font-size: 0.92rem;
-  color: var(--text);
-  padding-left: 1.2rem;
-  position: relative;
-}
-
-.audience-list li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-}
-
-/* --- Visual Block ------------------------------------------ */
-.visual-block {
-  background-color: var(--text);
-  color: var(--background);
-  border-radius: var(--radius);
-  padding: 2rem;
-}
-
-.visual-label {
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.5rem;
-}
-
-.visual-range {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  color: var(--secondary);
-  margin-bottom: 1.5rem;
-}
-
-.visual-bar-wrap {
-  margin-bottom: 0.75rem;
-}
-
-.visual-bar {
-  background-color: var(--primary);
-  color: var(--background);
-  font-size: 0.78rem;
-  font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 0.4rem 0.75rem;
-  border-radius: 2px;
-  border-left: 3px solid var(--accent);
-  transition: width var(--transition);
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
 }
 
-/* --- Resource Callout -------------------------------------- */
-.resource-callout {
-  text-align: center;
-  padding: 4rem 2rem;
-  max-width: 640px;
-  margin: 0 auto;
+.timing-bar {
+  height: 8px;
+  border-radius: 4px;
+  margin-bottom: 0.2rem;
 }
 
-.resource-label {
+.bar-low    { background-color: var(--color-border); width: 35%; }
+.bar-moderate { background-color: var(--color-primary-dk); width: 55%; }
+.bar-high   { background-color: var(--color-primary); width: 75%; }
+.bar-peak   { background-color: var(--color-accent); width: 100%; }
+
+.timing-note {
+  grid-column: 2;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-top: -0.5rem;
+}
+
+/* ============================================================
+   GOAL CARDS (Nutrition page)
+   ============================================================ */
+.goal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.goal-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+}
+
+.goal-tag {
+  display: inline-block;
   font-family: var(--font-display);
   font-size: 0.75rem;
-  letter-spacing: 0.25em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.5rem;
-}
-
-.resource-callout h3 {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  font-weight: 800;
-  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
   margin-bottom: 0.75rem;
 }
 
-.resource-callout p {
-  color: #4a5a50;
-  margin-bottom: 1.5rem;
-  font-size: 0.95rem;
-}
+.goal-tag.build    { background-color: rgba(76, 175, 80, 0.15); color: var(--color-primary); }
+.goal-tag.cut      { background-color: rgba(255, 111, 0, 0.15); color: var(--color-accent); }
+.goal-tag.maintain { background-color: rgba(255, 255, 255, 0.05); color: var(--color-text-muted); }
 
-/* --- Contact Strip ----------------------------------------- */
-.contact-strip {
-  background-color: var(--text);
-  color: var(--secondary);
-  text-align: center;
-  padding: 2rem;
-  font-size: 0.9rem;
-}
-
-.email-link {
-  display: block;
+.goal-card h3 {
   font-family: var(--font-display);
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--accent);
-  letter-spacing: 0.05em;
-  margin-top: 0.4rem;
-  transition: color var(--transition);
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: 0.5rem;
 }
 
-.email-link:hover {
-  color: #ff7a3a;
+.goal-card p {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
 }
 
-/* --- Footer ------------------------------------------------ */
+/* Resource Link */
+.resource-link {
+  background-color: var(--color-surface);
+  border-left: 3px solid var(--color-primary);
+  padding: 1rem 1.25rem;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+}
+
+.resource-link a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* ============================================================
+   SUPPLEMENTS PAGE
+   ============================================================ */
+
+/* Tier Legend */
+.tier-legend {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  padding: 1.5rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+.tier-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.tier-1 { background-color: rgba(76, 175, 80, 0.2); color: var(--color-primary); }
+.tier-2 { background-color: rgba(255, 111, 0, 0.2); color: var(--color-accent-lt); }
+.tier-3 { background-color: rgba(255,255,255,0.05); color: var(--color-text-muted); }
+
+.tier-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Supplement Cards */
+.supp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.two-col-supp {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.supp-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+}
+
+.tier2-card {
+  border-top: 2px solid var(--color-accent);
+}
+
+.supp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.supp-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-white);
+}
+
+.supp-tag {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background-color: rgba(76, 175, 80, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.supp-card p {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  margin-bottom: 1rem;
+}
+
+.supp-details {
+  border-top: 1px solid var(--color-border);
+  padding-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+}
+
+.detail-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--color-accent-lt);
+}
+
+/* Skip Grid */
+.skip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.skip-item {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+}
+
+.skip-item strong {
+  display: block;
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
 footer {
-  background-color: #0a0f0c;
-  color: var(--secondary);
-  padding: 3rem 2rem 1.5rem;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: 3rem 2rem;
+  text-align: center;
 }
 
 .footer-inner {
@@ -529,38 +742,33 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-  text-align: center;
+  gap: 0.5rem;
 }
 
-.footer-brand p {
-  font-size: 0.8rem;
-  color: rgba(184, 212, 195, 0.5);
-  margin-top: 0.4rem;
-  letter-spacing: 0.05em;
-}
-
-.footer-nav {
-  display: flex;
-  gap: 1.5rem;
+.footer-logo {
   font-family: var(--font-display);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
 }
 
-.footer-nav a {
-  color: rgba(184, 212, 195, 0.6);
-  transition: color var(--transition);
+footer p {
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
 }
 
-.footer-nav a:hover {
-  color: var(--background);
+footer a {
+  color: var(--color-primary);
+}
+
+footer a:hover {
+  color: var(--color-accent-lt);
 }
 
 .footer-copy {
-  font-size: 0.75rem;
-  color: rgba(184, 212, 195, 0.35);
-  letter-spacing: 0.05em;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--color-border);
 }
